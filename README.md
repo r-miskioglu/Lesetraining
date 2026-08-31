@@ -14,14 +14,17 @@ python3 -m venv .venv
 
 ## Ein Blatt erstellen
 
-1. Text in `text.txt` schreiben (Absätze durch eine **Leerzeile** trennen).
+1. Text in eine Datei schreiben (Absätze durch eine **Leerzeile** trennen).
+   Die Endung ist egal — es funktioniert jede reine Text-Datei, z. B. `.md`
+   oder `.txt`. In diesem Ordner liegen die Blätter als `.md`-Dateien
+   (z. B. `Buchstabe_B.md`, `Buchstabe_D.md`); `text.txt` ist ein Beispiel.
 2. Blatt erzeugen:
    ```bash
-   ./.venv/bin/python lesetblatt.py text.txt -t "Der kleine Igel"
+   ./.venv/bin/python lesetblatt.py Buchstabe_B.md -t "Der Buchstabe B"
    ```
-   → erzeugt `text.html` (gleicher Name wie die Eingabe, mit `.html`).
-   Eigener Ausgabename: `... -o igel.html`.
-3. `text.html` **im Browser öffnen** → **Strg+P** → **„Als PDF speichern"** (oder drucken).
+   → erzeugt `Buchstabe_B.html` (gleicher Name wie die Eingabe, mit `.html`).
+   Eigener Ausgabename: `... -o meinblatt.html`.
+3. Die erzeugte `.html`-Datei **im Browser öffnen** → **Strg+P** → **„Als PDF speichern"** (oder drucken).
    Wichtig: im Druckdialog **„Hintergrundgrafiken"** aktivieren, damit die Farben mitkommen.
 
 ## Aussehen anpassen
