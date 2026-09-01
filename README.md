@@ -1,7 +1,7 @@
 # Lese-Lern-Blätter erstellen
 
 Macht aus beliebigem deutschem Text ein **druckbares A4-Lese-Blatt** mit
-**zweifarbigen Silben** (Silbenmethode) und **fetten Satzanfängen** — eine ruhige,
+**zweifarbigen Silben** (Silbenmethode) und **fetten Satzanfängen**. Eine ruhige,
 lesefreundliche Lesehilfe (auch bei ADHS).
 
 ## Einmal einrichten
@@ -23,7 +23,7 @@ python3 -m venv .venv
 ## Ein Blatt erstellen
 
 1. Text in eine Datei im Ordner `input/` schreiben (Absätze durch eine
-   **Leerzeile** trennen). Die Endung ist egal — es funktioniert jede reine
+   **Leerzeile** trennen). Die Endung ist egal, es funktioniert jede reine
    Text-Datei, z. B. `.md` oder `.txt`. Beispiele liegen schon bereit
    (`input/Buchstabe_B.md`, `input/text.txt`).
 2. Blatt erzeugen:
@@ -52,5 +52,5 @@ Oben in `lesetblatt.py` im **KONFIG-Block** (gefahrlos herumprobieren):
 ## Hinweis
 
 Die Silbentrennung kommt aus dem Wörterbuch `de_DE` (Bibliothek `pyphen`) und ist bei
-Alltagswörtern sehr zuverlässig. Bei seltenen Wörtern lohnt ein kurzer Blick — das
+Alltagswörtern sehr zuverlässig. Bei seltenen Wörtern lohnt ein kurzer Blick; das
 Ergebnis lässt sich notfalls im erzeugten `.html` von Hand nachbessern.
