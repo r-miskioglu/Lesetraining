@@ -12,19 +12,27 @@ python3 -m venv .venv
 ./.venv/bin/pip install pyphen
 ```
 
+## Ordnerstruktur
+
+| Ordner / Datei  | Inhalt                                                        |
+|-----------------|---------------------------------------------------------------|
+| `input/`        | die Text-Dateien (`.md` / `.txt`), aus denen Blätter entstehen |
+| `output/`       | die erzeugten `.html`-Blätter (zum Öffnen/Drucken)            |
+| `lesetblatt.py` | das Programm                                                  |
+
 ## Ein Blatt erstellen
 
-1. Text in eine Datei schreiben (Absätze durch eine **Leerzeile** trennen).
-   Die Endung ist egal — es funktioniert jede reine Text-Datei, z. B. `.md`
-   oder `.txt`. In diesem Ordner liegen die Blätter als `.md`-Dateien
-   (z. B. `Buchstabe_B.md`, `Buchstabe_D.md`); `text.txt` ist ein Beispiel.
+1. Text in eine Datei im Ordner `input/` schreiben (Absätze durch eine
+   **Leerzeile** trennen). Die Endung ist egal — es funktioniert jede reine
+   Text-Datei, z. B. `.md` oder `.txt`. Beispiele liegen schon bereit
+   (`input/Buchstabe_B.md`, `input/text.txt`).
 2. Blatt erzeugen:
    ```bash
-   ./.venv/bin/python lesetblatt.py Buchstabe_B.md -t "Der Buchstabe B"
+   ./.venv/bin/python lesetblatt.py input/Buchstabe_B.md -t "Der Buchstabe B"
    ```
-   → erzeugt `Buchstabe_B.html` (gleicher Name wie die Eingabe, mit `.html`).
-   Eigener Ausgabename: `... -o meinblatt.html`.
-3. Die erzeugte `.html`-Datei **im Browser öffnen** → **Strg+P** → **„Als PDF speichern"** (oder drucken).
+   → erzeugt `output/Buchstabe_B.html` (gleicher Name wie die Eingabe, mit `.html`).
+   Eigener Ausgabename: `... -o output/meinblatt.html`.
+3. Die erzeugte Datei in `output/` **im Browser öffnen** → **Strg+P** → **„Als PDF speichern"** (oder drucken).
    Wichtig: im Druckdialog **„Hintergrundgrafiken"** aktivieren, damit die Farben mitkommen.
 
 ## Aussehen anpassen

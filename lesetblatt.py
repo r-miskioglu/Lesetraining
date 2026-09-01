@@ -12,10 +12,10 @@ Gedacht als Lesehilfe (z. B. fuer Grundschueler, auch bei ADHS): eine klare
 Methode + ruhiges Layout statt maximaler Buntheit.
 
 Benutzung:
-    python3 lesetblatt.py text.txt
-    # -> erzeugt lesetblatt.html  (im Browser oeffnen, Strg+P -> Als PDF)
+    python3 lesetblatt.py input/text.txt
+    # -> erzeugt output/text.html  (im Browser oeffnen, Strg+P -> Als PDF)
 
-    python3 lesetblatt.py text.txt -o kind1.html --titel "Meine Lesegeschichte"
+    python3 lesetblatt.py input/text.txt -o output/kind1.html --titel "Meine Lesegeschichte"
 
 Zum Ausprobieren einfach die Werte im KONFIG-Block unten anpassen.
 """
@@ -179,8 +179,8 @@ def baue_html(body: str, titel: str) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Erzeugt ein druckbares Lese-Lern-Blatt.")
-    parser.add_argument("eingabe", help="Text-Datei (.txt) mit deutschem Text")
-    parser.add_argument("-o", "--ausgabe", help="Ausgabe-HTML (Default: <eingabe>.html)")
+    parser.add_argument("eingabe", help="Text-Datei (.md/.txt) mit deutschem Text, z. B. input/text.txt")
+    parser.add_argument("-o", "--ausgabe", help="Ausgabe-HTML (Default: output/<eingabe>.html)")
     parser.add_argument("-t", "--titel", default="Lese-Blatt", help="Ueberschrift des Blatts")
     args = parser.parse_args()
 
@@ -189,7 +189,13 @@ def main() -> int:
         print(f"Fehler: Datei nicht gefunden: {eingabe}", file=sys.stderr)
         return 1
 
-    ausgabe = Path(args.ausgabe) if args.ausgabe else eingabe.with_suffix(".html")
+    if args.ausgabe:
+        ausgabe = Path(args.ausgabe)
+    else:
+        # Standard: gleicher Name wie die Eingabe, aber als .html im Ordner output/
+        ausgabe_ordner = Path("output")
+        ausgabe_ordner.mkdir(exist_ok=True)
+        ausgabe = ausgabe_ordner / (eingabe.stem + ".html")
     dic = pyphen.Pyphen(lang=SPRACHE)
 
     roher_text = eingabe.read_text(encoding="utf-8")
